@@ -1,0 +1,65 @@
+#' QuickPlot of a taxon
+#'
+#' @param physeq a phyloseq object
+#' @param taxon the name of the taxon you want to plot (y axis)
+#' @param trait the name of the trait you want on your x axis
+#' @param colour another variable you may want to color your points by
+#' @param fill another variable you may want to fill your non-points by
+#' @param transform a transformation, all those in the transform_microbiota_ga are allowed
+#' @param jitter_alpha logical for whether you want to see the dots or not (careful, time-consuming step)
+#'
+#' @return a ggplot2 object
+#' @export
+#'
+#' @examples
+#'
+#'
+phy_plotTaxon <- function(physeq,
+                              taxon,
+                              trait,
+                              colour = NULL,
+                              transform= "clr",
+                              jitter_alpha = NULL){
+
+
+  stopifnot(any(class(data_merged["trait"]) == c("integer", "double", "numeric", "Date", "character", "factor")),
+            "trait select is of a non-compatible format")
+
+  real_name <- taxon
+  easier_name <- make.names(real_name)
+
+  # transform otu counts
+  physeq_transf <- transform_microbiota_ga(physeq, transform = transform)
+  taxa_names(physeq_transf) <-make.names(taxa_names(physeq_transf))
+
+  data_merged <- OtuMetaTable(physeq_transf)
+
+  if(any(class(data_merged["trait"]) == c("integer", "double", "numeric", "Date"))){
+    if (!is.null(jitter_alpha)){
+      scatpl <- ggplot(data = data_merged, aes_string(x = trait, y = easier_name)) +
+        geom_point(aes_string(colour=colour, fill = fill)) +
+        geom_jitter(alpha = jitter_alpha)  +
+        labs(title = real_name,
+             subtitle = paste("trasnformation method: ", transform, sep = "")
+        )
+    }else{
+      scatpl <- ggplot(data = data_merged, aes_string(x = trait, y = easier_name)) +
+        geom_jitter(aes_string(colour=colour, fill = fill)) +
+        labs(title = real_name,
+             subtitle = paste("trasnformation method: ", transform, sep = "")
+        )
+    }
+
+    return(scatpl)
+  }
+
+  if(any(class(data_merged["trait"]) == c("character", "factor"))){
+    if (!is.null(jitter_alpha)){
+      boxp <- ggplot(data = data_merged, aes_string(x = trait, y = make.names(taxon))) + geom_boxplot(aes_string(colour=colour, fill = fill)) + geom_jitter(alpha = jitter_alpha)  + ggtitle(paste("trasnformation method: ", transform, sep = ""))
+    }else{
+      boxp <- ggplot(data = data_merged, aes_string(x = trait, y = make.names(taxon))) + geom_boxplot(aes_string(colour=colour, fill = fill)) + ggtitle(paste("transformation method: ", transform, sep = ""))
+    }
+
+    return(boxp)
+  }
+}

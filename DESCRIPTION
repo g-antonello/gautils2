@@ -1,0 +1,15 @@
+Package: gautils2
+Type: Package
+Title: Wrapper of my functions to wrangle microbiome and non-microbiome data  
+Version: 0.1.0
+Author: Giacomo Antonello
+Maintainer: Giacomo Antonello <giacomoantonello1@gmail.com>
+Description: The package contains several functions for data manipulation, visualization and so on. Functions about phyloseq objects start with "phy_".
+    Use four spaces when indenting paragraphs within the Description.
+License: GNU 3.0
+Encoding: UTF-8
+LazyData: true
+Imports: phyloseq, microbiome, tidyverse, magrittr
+Depends: phyloseq, microbiome, tidyverse, magrittr
+RoxygenNote: 7.1.2
+
