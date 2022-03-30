@@ -36,13 +36,13 @@ data(GlobalPatterns)
 
 betadiversitiesFull <- beta_div_betw_withn(physeq = GlobalPatterns,
                                            dist = "bray",
-                                           variab = "Site",
+                                           variab = "SampleType",
                                            verbose = TRUE,
                                            btwn_pairwise = TRUE)
 
 betadiversitiesSimpler <- beta_div_betw_withn(physeq = GlobalPatterns,
                                               dist = "bray",
-                                              variab = "Site",
+                                              variab = "SampleType",
                                               verbose = TRUE,
                                               btwn_pairwise = FALSE)
 }
