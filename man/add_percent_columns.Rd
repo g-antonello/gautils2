@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_percent_columns.R
 \name{add_percent_columns}
 \alias{add_percent_columns}
-\title{Function taking a table as input and adding percentage values}
+\title{Add percentages to multicolumn tables}
 \usage{
 add_percent_columns(tb)
 }
@@ -13,7 +13,7 @@ add_percent_columns(tb)
 a `matrix` with percent columns added next to each table column
 }
 \description{
-Function taking a table as input and adding percentage values
+Takes a complex table object as input, and it calculates the percentage for each column
 }
 \examples{
 

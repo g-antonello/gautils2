@@ -34,7 +34,15 @@ Function taking a phyloseq object or a diversity matrix and spits out group-wise
 library(phyloseq)
 data(GlobalPatterns)
 
-betadiversitiesFull <- beta_div_betw_withn(physeq = GlobalPatterns, dist = "bray", variab = "Site", verbose = TRUE, btwn_pairwise = TRUE)
+betadiversitiesFull <- beta_div_betw_withn(physeq = GlobalPatterns,
+                                           dist = "bray",
+                                           variab = "Site",
+                                           verbose = TRUE,
+                                           btwn_pairwise = TRUE)
 
-betadiversitiesSimpler <- beta_div_betw_withn(physeq = GlobalPatterns, dist = "bray", variab = "Site", verbose = TRUE, btwn_pairwise = FALSE)
+betadiversitiesSimpler <- beta_div_betw_withn(physeq = GlobalPatterns,
+                                              dist = "bray",
+                                              variab = "Site",
+                                              verbose = TRUE,
+                                              btwn_pairwise = FALSE)
 }

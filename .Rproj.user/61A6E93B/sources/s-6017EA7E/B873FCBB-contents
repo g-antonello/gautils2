@@ -9,8 +9,8 @@
 #' @examples
 #' declutter_Envir(extra_rules = c("papaya", "attempt"))
 
-declutter_Envir <- function(extra_rules = NULL){
-  all_rules.t0 <- paste("tmp", extra_rules, "test", sep = "|")
+declutter.envir <- function(extra_rules = "test", verbose = FALSE){
+  all_rules.t0 <- paste(extra_rules,"tmp", sep = "|")
 
   obj_to_del <- grep(all_rules.t0, ls(envir = parent.frame(1)), value = TRUE)
   obj_to_del_grep <- obj_to_del[2:length(obj_to_del)]

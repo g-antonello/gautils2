@@ -22,4 +22,5 @@ df_test <- data.frame(variable_new = rnorm(n = nsamples(GlobalPatterns), mean = 
 rownames(df) <- samples_names(GlobalPatterns)
 phy_add_metadata_variables(physeq=GlobalPatterns,
                            df = df_test)
+
 }

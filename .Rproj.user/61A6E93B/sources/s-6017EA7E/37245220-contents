@@ -8,6 +8,11 @@
 #'
 #' @export
 #'
+#' @importFrom phyloseq prune_samples
+#' @importFrom microbiome meta
+#' @importFrom microbiome abundances
+#' @import tidyverse
+#'
 #' @examples
 #' data(GlobalPatterns)
 #' df_test <- data.frame(variable_new = rnorm(n = nsamples(GlobalPatterns), mean = 2, sd = 0.8))
@@ -17,7 +22,7 @@
 #'
 phy_add_metadata_variables <- function(physeq, df, by){
 
-  tmp_meta <- microbiome::meta(physeq) %>%
+  tmp_meta <- meta(physeq) %>%
     rownames_to_column("sampNamestmp")
 
   intersect_names <- intersect(tmp_meta[[by]],

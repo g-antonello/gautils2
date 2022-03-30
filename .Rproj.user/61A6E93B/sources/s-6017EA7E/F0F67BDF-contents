@@ -11,11 +11,8 @@
 #' @return a \code{data.frame} object containing within and between diversities based on the variable specified. "between_pairwise" are calculated as "for each level of the variable categories, find diversities of all samples belonging to it against all other samples not belonging to it".
 #' @export
 #'
-#' @import microbiome
 #' @importFrom reshape2 melt
 #' @importFrom purrr transpose
-#' @import tidyverse
-#'
 #' @import phyloseq
 #' @import microbiome
 #'
@@ -25,17 +22,9 @@
 #' library(phyloseq)
 #' data(GlobalPatterns)
 #'
-#' betadiversitiesFull <- beta_div_betw_withn(physeq = GlobalPatterns,
-#'                                            dist = "bray",
-#'                                            variab = "SampleType",
-#'                                            verbose = TRUE,
-#'                                            btwn_pairwise = TRUE)
+#' betadiversitiesFull <- beta_div_betw_withn(physeq = GlobalPatterns, dist = "bray", variab = "Site", verbose = TRUE, btwn_pairwise = TRUE)
 #'
-#' betadiversitiesSimpler <- beta_div_betw_withn(physeq = GlobalPatterns,
-#'                                               dist = "bray",
-#'                                               variab = "SampleType",
-#'                                               verbose = TRUE,
-#'                                               btwn_pairwise = FALSE)
+#' betadiversitiesSimpler <- beta_div_betw_withn(physeq = GlobalPatterns, dist = "bray", variab = "Site", verbose = TRUE, btwn_pairwise = FALSE)
 
 
 beta_div_betw_withn <- function (physeq,
@@ -44,7 +33,7 @@ beta_div_betw_withn <- function (physeq,
                                  verbose = FALSE,
                                  btwn_pairwise = FALSE)
 {
-
+  library(microbiome)
   if (class(dist) %in% c("matrix", "dist")) {
     if (verbose) {
       print("using dist as distance matrix/distance")
@@ -75,11 +64,12 @@ beta_div_betw_withn <- function (physeq,
     print("extracting within-group diversities...")
   }
   within_divs <-
-    lapply(split_samp_names, function(s) dist_upper[s$samp_names,s$samp_names] %>%
-               melt() %>%
-               .$value %>%
-               .[complete.cases(.)]
-      ) %>%
+    lapply(split_samp_names, function(s)
+      ifelse(length(s) < 2, NA, # if the length of the vector is 1, it is impossible to get within diversities, so you might as well skip that
+             dist_upper[s$samp_names,
+                        s$samp_names] %>% melt() %>% .$value %>% .[complete.cases(.)]
+      )
+    ) %>%
     .[sapply(., length) != 0]
 
 
@@ -91,7 +81,7 @@ beta_div_betw_withn <- function (physeq,
       dist_upper[s$samp_names,!(colnames(dist_upper) %in% s$samp_names)] %>% melt() %>%
         .$value %>% .[complete.cases(.)]) %>% .[sapply(., length) !=
                                                   0]
-  between_divs_all <- between_divs_all[names(between_divs_all) %in% names(within_divs)]
+  between_divs_all <- between_divs_all[names(within_divs)]
   if (btwn_pairwise) {
     if (verbose) {
       print("extracting between-group diversities, one-vs-one")
@@ -140,6 +130,6 @@ beta_div_betw_withn <- function (physeq,
     ) %>%
       as.data.frame()
   }
-  return(betadiv_results)
+  return(betadiv_results[complete.cases(betadiv_results),])
 }
 

@@ -23,7 +23,6 @@ This funcion adds some levels of phylogeny based on a phyloseq object onto a `da
 }
 \examples{
 data(GlobalPatterns)
-library(tidyverse)
 taxon_prevalences <- microbiome::prevalence(GlobalPatterns) \%>\%
     as.data.frame() \%>\%
     rownames_to_column("OTU") \%>\% # create a column containing the unique taxon identifier

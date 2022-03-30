@@ -23,12 +23,12 @@
 #'     add_ASV_name_to_ASV_results(df = ., col_ASV = "OTU", physeq = GlobalPatterns, tax_lvls = c("Phylum", "Class", "Genus"))
 #'
 #'
-add_ASV_name_to_ASV_results <- function(df, col_ASV,  physeq, tax_lvls = "all") {
+add_ASV_name_to_ASV_results <- function(df,col_ASV,  physeq, tax_lvls = "all") {
   tax <- data.frame(physeq@tax_table@.Data)
   if(!(col_ASV %in% colnames(tax))){
     tax[col_ASV] <- rownames(tax)
   }
-  indx_max <- which(col_ASV == colnames(tax))
+  indx_max <- which(col_ASV, colnames(tax))
   tax <- tax[, 1:indx_max]
 
   if(tax_lvls != "all"){
