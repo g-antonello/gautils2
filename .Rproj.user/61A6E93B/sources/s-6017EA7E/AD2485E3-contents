@@ -5,7 +5,7 @@
 #' @param physeq A phyloseq object contaning or not containing `sample_data`
 #' @param new_metadata a data.frame object, with rownames containing `sample_names` of the `physeq` object
 #'
-#' @return
+#' @return a phyloseq object with the new metadata stored under the "sam_data" slot
 #' @export
 #'
 #' @examples
