@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy_substitute_metadata.R
 \name{phy_substitute_metadata}
 \alias{phy_substitute_metadata}
-\title{Substitute metadata in phyloseq objects. the two data frames must have row names matching sample names. The sample order doesn't matter, because the functions will reorder the new metatadata rows, to match the sample order in the phyloseq object.}
+\title{Substitute a phyloseq metadata with a new data.frame}
 \usage{
 phy_substitute_metadata(physeq, new_metadata)
 }
