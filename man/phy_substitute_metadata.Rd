@@ -12,7 +12,7 @@ phy_substitute_metadata(physeq, new_metadata)
 \item{new_metadata}{a data.frame object, with rownames containing `sample_names` of the `physeq` object}
 }
 \value{
-
+a phyloseq object with the new metadata stored under the "sam_data" slot
 }
 \description{
 Substitute metadata in phyloseq objects. the two data frames must have row names matching sample names. The sample order doesn't matter, because the functions will reorder the new metatadata rows, to match the sample order in the phyloseq object.

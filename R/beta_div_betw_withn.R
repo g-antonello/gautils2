@@ -75,11 +75,12 @@ beta_div_betw_withn <- function (physeq,
     print("extracting within-group diversities...")
   }
   within_divs <-
-    lapply(split_samp_names, function(s) dist_upper[s$samp_names,s$samp_names] %>%
-               melt() %>%
-               .$value %>%
-               .[complete.cases(.)]
-      ) %>%
+    lapply(split_samp_names, function(s) ifelse(nrow(s) ==1, "NA", dist_upper[s$samp_names,s$samp_names] %>%
+                                                  melt() %>%
+                                                  .$value %>%
+                                                  .[complete.cases(.)]
+    )
+    ) %>%
     .[sapply(., length) != 0]
 
 
@@ -114,6 +115,8 @@ beta_div_betw_withn <- function (physeq,
                                                                             0]
     }
   }
+
+
   if (btwn_pairwise) {
     betadiv_results <- rbind(
       bind_rows(lapply(within_divs,
