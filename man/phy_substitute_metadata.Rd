@@ -11,6 +11,17 @@ phy_substitute_metadata(physeq, new_metadata)
 
 \item{new_metadata}{a data.frame object, with rownames containing `sample_names` of the `physeq` object}
 }
+\value{
+
+}
 \description{
 Substitute metadata in phyloseq objects. the two data frames must have row names matching sample names. The sample order doesn't matter, because the functions will reorder the new metatadata rows, to match the sample order in the phyloseq object.
+}
+\examples{
+data("GlobalPatterns")
+exMeta <- microbiome::meta(GlobalPatterns)
+newMeta <- exMeta \%>\% mutate(newVar = runif(n = nrow(exMeta), min =  0, max = 20))
+
+GlobalPatterns <- phy_substitute_metadata(physeq = GlobalPatterns, new_metadata = newMeta)
+
 }

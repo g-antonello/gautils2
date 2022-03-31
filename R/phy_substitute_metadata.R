@@ -4,8 +4,16 @@
 #'
 #' @param physeq A phyloseq object contaning or not containing `sample_data`
 #' @param new_metadata a data.frame object, with rownames containing `sample_names` of the `physeq` object
+#'
+#' @return
 #' @export
 #'
+#' @examples
+#' data("GlobalPatterns")
+#' exMeta <- microbiome::meta(GlobalPatterns)
+#' newMeta <- exMeta %>% mutate(newVar = runif(n = nrow(exMeta), min =  0, max = 20))
+#'
+#' GlobalPatterns <- phy_substitute_metadata(physeq = GlobalPatterns, new_metadata = newMeta)
 #'
 phy_substitute_metadata <- function(physeq, new_metadata){
   if(any(!rownames(new_metadata)%in%sample_names(physeq))){ # this is like asking: is any item of the vector NOT true? if responds true, it means rownames are not all there.
