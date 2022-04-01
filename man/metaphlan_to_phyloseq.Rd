@@ -2,20 +2,24 @@
 % Please edit documentation in R/metaphlan_to_phyloseq.R
 \name{metaphlan_to_phyloseq}
 \alias{metaphlan_to_phyloseq}
-\title{Read Metaphlan profiles}
+\title{Create a phyloseq object from Metaphlan profiles}
 \usage{
 metaphlan_to_phyloseq(mpa, metadata = NULL, phyloTree = NULL, version = 4)
 }
 \arguments{
-\item{version}{the metaphlan version, by default, version 4 is taken (to date it is the latest - Apr 2022)}
+\item{mpa}{Either a \code{character} vector containing the path to the text table to read, or the already-read object}
 
-\item{path}{Either a \code{character} vector containing the path to the text table to read, or the already-read object.}
+\item{metadata}{If in possession, add metadata to the phyloseq object. make sure the name and order of samples is correct for the mpa columns and metadata rows}
+
+\item{phyloTree}{If in possession, ad phylogenetic tree of these taxa. make sure the tree is read with \code{ape::read.tree}}
+
+\item{version}{the metaphlan version, by default, version 4 is taken (to date it is the latest - Apr 2022). Versions below 3 are not supported}
 }
 \value{
 
 }
 \description{
-Given the table location, the function
+Given the profiles' location, or a pre-loaded table, the function creates a taxonomic table and creates a phyloseq object. if metadata and phylogenetic tree are available, it will try to include those
 }
 \examples{
 data("metaphlanData")
