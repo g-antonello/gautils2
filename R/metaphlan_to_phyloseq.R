@@ -2,12 +2,12 @@
 #'
 #' Given the table location, the function
 #'
-#' @param path a \code{character} vector containing the path to the text table to read
+#' @param path Either a \code{character} vector containing the path to the text table to read, or the already-read object.
 #' @param version the metaphlan version, by default, version 4 is taken (to date it is the latest - Apr 2022)
 #'
 #' @importFrom phyloseq phyloseq
 #' @importFrom phyloseq sam_data
-#' @importFrom phylsoeq otu_table
+#' @importFrom phyloseq otu_table
 #' @importFrom data.table fread
 #' @importFrom magrittr %>%
 #' @importFrom tidyr separate
@@ -16,7 +16,18 @@
 #' @export
 #'
 #' @examples
-metaphlan_to_phyloseq <- function(mpa_path, metadata = NULL, phyloTree = NULL, version = 4){
+#' data("metaphlanData")
+#'
+#' meta_physeq <- metaphlan_to_phyloseq <- function(example_metaphlan_data,
+#' metadata = NULL,
+#' phyloTree = NULL,
+#' version = 4)
+#'
+
+metaphlan_to_phyloseq <- function(mpa,
+                                  metadata = NULL,
+                                  phyloTree = NULL,
+                                  version = 4){
   # load raw metaphlan data
   raw_mpa <- fread(mpa_path) %>%
     as.data.frame(raw_mpa)

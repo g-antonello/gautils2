@@ -4,16 +4,25 @@
 \alias{metaphlan_to_phyloseq}
 \title{Read Metaphlan profiles}
 \usage{
-metaphlan_to_phyloseq(mpa_path, metadata = NULL, phyloTree = NULL, version = 4)
+metaphlan_to_phyloseq(mpa, metadata = NULL, phyloTree = NULL, version = 4)
 }
 \arguments{
 \item{version}{the metaphlan version, by default, version 4 is taken (to date it is the latest - Apr 2022)}
 
-\item{path}{a \code{character} vector containing the path to the text table to read}
+\item{path}{Either a \code{character} vector containing the path to the text table to read, or the already-read object.}
 }
 \value{
 
 }
 \description{
 Given the table location, the function
+}
+\examples{
+data("metaphlanData")
+
+meta_physeq <- metaphlan_to_phyloseq <- function(example_metaphlan_data,
+metadata = NULL,
+phyloTree = NULL,
+version = 4)
+
 }
