@@ -33,14 +33,14 @@ metaphlan_to_phyloseq <- function(mpa,
   if(version == 4){
     if(is.character(mpa)){
       # load raw metaphlan data
-      mpa <- fread(mpa_path) %>%
+      mpa <- fread(mpa) %>%
         as.data.frame()
     }
 
     if(version == 3){
       if(is.character(mpa)){
         # load raw metaphlan data
-        mpa <- fread(mpa_path,skip = 1) %>%
+        mpa <- fread(mpa,skip = 1) %>%
           as.data.frame()
       }
     }
