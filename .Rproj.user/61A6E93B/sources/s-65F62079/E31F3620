@@ -1,0 +1,25 @@
+{
+    "id": "E31F3620",
+    "path": null,
+    "project_path": null,
+    "type": "r_code_browser",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1648815806755.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "context": "package:base:::is.character"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7070700267798885234,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1648815806755,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -20,7 +20,7 @@ Given the table location, the function
 \examples{
 data("metaphlanData")
 
-meta_physeq <- metaphlan_to_phyloseq <- function(example_metaphlan_data,
+meta_physeq <- metaphlan_to_phyloseq <- function(metaphlanData,
 metadata = NULL,
 phyloTree = NULL,
 version = 4)

@@ -18,7 +18,7 @@
 #' @examples
 #' data("metaphlanData")
 #'
-#' meta_physeq <- metaphlan_to_phyloseq <- function(example_metaphlan_data,
+#' meta_physeq <- metaphlan_to_phyloseq <- function(metaphlanData,
 #' metadata = NULL,
 #' phyloTree = NULL,
 #' version = 4)
@@ -28,18 +28,31 @@ metaphlan_to_phyloseq <- function(mpa,
                                   metadata = NULL,
                                   phyloTree = NULL,
                                   version = 4){
-  # load raw metaphlan data
-  raw_mpa <- fread(mpa_path) %>%
-    as.data.frame(raw_mpa)
 
-  rownames(raw_mpa) <- paste("taxon", 1:nrow(raw_mpa), sep = "")
+
+  if(version == 4){
+    if(is.character(mpa)){
+      # load raw metaphlan data
+      mpa <- fread(mpa_path) %>%
+        as.data.frame()
+    }
+
+    if(version == 3){
+      if(is.character(mpa)){
+        # load raw metaphlan data
+        mpa <- fread(mpa_path,skip = 1) %>%
+          as.data.frame()
+      }
+    }
+
+  rownames(mpa) <- paste("taxon", 1:nrow(mpa), sep = "")
 
   # subset taxonomic names, and keep the counts per samples only
-  otu_ready <- raw_mpa[,3:ncol(raw_mpa)] %>%
+  otu_ready <- mpa[,3:ncol(mpa)] %>%
     as.matrix()
 
   # create taxonomy table
-  taxonomy_tab <- select(raw_mpa, clade_name) %>%
+  taxonomy_tab <- select(mpa, clade_name) %>%
     separate(col="clade_name", into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "SGB"),sep = "\\|", fill = "right") %>%
     as.matrix()
 
@@ -49,4 +62,7 @@ metaphlan_to_phyloseq <- function(mpa,
                          sam_data(metadata))
 
     return(profiles)
+  }
+
+  ## if version == 3? older versions are not too important
 }
