@@ -13,7 +13,7 @@
 #' @param palette similarly to ggpubr "palette" parameters, the function allows for a palette name (eg: "standard" is ggplot2 standard palette, but all palettes in the "ggsci" package are allowed)
 #'
 #' @importFrom grDevices chull
-#' @import tidyerse
+#' @import tidyverse
 #'
 #' @return a ggplot2 object
 #' @export
