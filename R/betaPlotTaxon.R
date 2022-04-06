@@ -1,13 +1,13 @@
 #' Fancy MDS Plots
 #'
-#' The function wraps the phyloseq functions "distance", "ordinate", and "plot_ordination",
-#' also adding some fancier represantations, called "spiders", "hulls" and "ellipses".
+#' The function wraps the phyloseq functions "distance", "ordinate", and "plot_ordination".
+#' This function is useful to see the gradient of abundance of a taxon in the 2D ordinated dataset
 #'
 #' @param physeq A phyloseq object, **CAREFUL**: the function doesn't transform internally, so if you choose to calculate the distance matrix internally with "ordinate", make sure you transform the counts prior to function call (usually relative abundance is accepted)
 #' @param dist distance object or character vector saying the distance metric to apply
 #' @param method one of the methods allowed by "ordinate" in the phyloseq object
 #' @param axes The axes to be plotted, default are the first 2, which should discriminate samples better
-#' @param taxon the taxon name to color the samples by
+#' @param taxon the taxon name to color the samples by. The palette is "viridis_c"
 #'
 #' @importFrom grDevices chull
 #' @import tidyverse

@@ -18,19 +18,19 @@ betaPlot(
 \arguments{
 \item{physeq}{A phyloseq object, **CAREFUL**: the function doesn't transform internally, so if you choose to calculate the distance matrix internally with "ordinate", make sure you transform the counts prior to function call (usually relative abundance is accepted)}
 
-\item{dist}{distance object or character vector saying the distance metric to apply}
+\item{dist}{Distance object or character vector saying the distance metric to apply}
 
-\item{method}{one of the methods allowed by "ordinate" in the phyloseq object}
+\item{method}{One of the methods allowed by "ordinate" in the phyloseq object}
 
 \item{axes}{The axes to be plotted, default are the first 2, which should discriminate samples better}
 
-\item{color}{the variable to color the samples by. Only metadata variables are supported, to color taxa, use betaPlotTaxa}
+\item{color}{The variable to color the samples by. Only metadata variables are supported, to color taxa, use betaPlotTaxa}
 
-\item{shape}{should you want to further differentiate your points. the default is that shapes are chosen based on the color variable}
+\item{shape}{Should you want to further differentiate your points. the default is that shapes are chosen based on the color variable}
 
-\item{visual_grouping}{this is the cool parameter of this function. the allowed ones are "spiders", "hulls" and "ellipses". Try them}
+\item{visual_grouping}{This is the cool parameter of this function. the allowed ones are "spiders", "hulls" and "ellipses"}
 
-\item{palette}{similarly to ggpubr "palette" parameters, the function allows for a palette name (eg: "standard" is ggplot2 standard palette, but all palettes in the "ggsci" package are allowed)}
+\item{palette}{Similarly to ggpubr's "palette" parameters, the function allows for a palette name, (default is "standard", the ggplot2 default palette). All palettes in the ggsci package are allowed too}
 }
 \value{
 a ggplot2 object

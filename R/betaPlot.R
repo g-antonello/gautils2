@@ -4,13 +4,13 @@
 #' also adding some fancier represantations, called "spiders", "hulls" and "ellipses".
 #'
 #' @param physeq A phyloseq object, **CAREFUL**: the function doesn't transform internally, so if you choose to calculate the distance matrix internally with "ordinate", make sure you transform the counts prior to function call (usually relative abundance is accepted)
-#' @param dist distance object or character vector saying the distance metric to apply
-#' @param method one of the methods allowed by "ordinate" in the phyloseq object
+#' @param dist Distance object or character vector saying the distance metric to apply
+#' @param method One of the methods allowed by "ordinate" in the phyloseq object
 #' @param axes The axes to be plotted, default are the first 2, which should discriminate samples better
-#' @param color the variable to color the samples by. Only metadata variables are supported, to color taxa, use betaPlotTaxa
-#' @param shape should you want to further differentiate your points. the default is that shapes are chosen based on the color variable
-#' @param visual_grouping this is the cool parameter of this function. the allowed ones are "spiders", "hulls" and "ellipses". Try them
-#' @param palette similarly to ggpubr "palette" parameters, the function allows for a palette name (eg: "standard" is ggplot2 standard palette, but all palettes in the "ggsci" package are allowed)
+#' @param color The variable to color the samples by. Only metadata variables are supported, to color taxa, use betaPlotTaxa
+#' @param shape Should you want to further differentiate your points. the default is that shapes are chosen based on the color variable
+#' @param visual_grouping This is the cool parameter of this function. the allowed ones are "spiders", "hulls" and "ellipses"
+#' @param palette Similarly to ggpubr's "palette" parameters, the function allows for a palette name, (default is "standard", the ggplot2 default palette). All palettes in the ggsci package are allowed too
 #'
 #' @importFrom grDevices chull
 #' @import tidyverse
