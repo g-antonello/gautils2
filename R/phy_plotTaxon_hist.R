@@ -19,10 +19,10 @@
 #' # fix a bug in the ggplot2 code, which does not accept numeric variables as string names
 #' taxa_names(GlobalPatterns) <- paste0("t",taxa_names(GlobalPatterns))
 #'
-#' histogram_taxa(physeq = GlobalPatterns, taxa = "t549656", color_fill = "SampleType", geom="density")
-#' histogram_taxa(physeq = GlobalPatterns, taxa = "t549656", color_fill = "SampleType", geom="histogram")
+#' phy_plotTaxon_hist(physeq = GlobalPatterns, taxa = "t549656", color_fill = "SampleType", geom="density")
+#' phy_plotTaxon_hist(physeq = GlobalPatterns, taxa = "t549656", color_fill = "SampleType", geom="histogram")
 #'
-phy_plotTaxa_hist <- function(physeq,
+phy_plotTaxon_hist <- function(physeq,
                             taxa,
                             color_or_fill,
                             transform = "clr",

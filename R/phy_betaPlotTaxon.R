@@ -19,13 +19,13 @@
 #' @examples
 #' data("enterotype")
 #'
-#' betaPlotTaxon(physeq = enterotype,
+#' phy_betaPlotTaxon(physeq = enterotype,
 #' dist = "bray",
 #' method = "PCoA",
 #' axes = 1:2,
 #' taxon = "Bacteroides")
 
-betaPlotTaxon <- function(physeq,
+phy_betaPlotTaxon <- function(physeq,
                      dist = "bray",
                      method = "PCoA",
                      axes = 1:2,
@@ -55,7 +55,7 @@ prop_var <- c(plot0$labels$x,
   sapply("[[", 4)
 
 colnames_new <- c(paste0("Axis ", axes[1], "  ",prop_var[1]),
-                  paste0("Axis ", axes[2], "  ",prop_var[1])
+                  paste0("Axis ", axes[2], "  ",prop_var[2])
                   )
 
 colnames(basic_plot_data)[1:2] <- c("tmp1", "tmp2")

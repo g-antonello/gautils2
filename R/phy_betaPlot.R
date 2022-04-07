@@ -29,7 +29,7 @@
 #' visual_grouping = "spiders",
 #' palette = "jco")
 
-betaPlot <- function(physeq,
+phy_betaPlot <- function(physeq,
                      dist = "bray",
                      method = "PCoA",
                      axes = 1:2,
