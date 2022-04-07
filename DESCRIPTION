@@ -9,6 +9,6 @@ Description: The package contains several functions for data manipulation, visua
 License: GNU 3.0
 Encoding: UTF-8
 LazyData: true
-Depends: phyloseq, microbiome, tidyverse,  kableExtra, purrr, reshape2, stringr
+Depends: phyloseq, microbiome, tidyverse,  kableExtra, purrr, reshape2, stringr, magrittr, tidyr
 RoxygenNote: 7.1.2
 
