@@ -16,17 +16,17 @@
 #'                      x = "Enterotype",
 #'                      fill = "SeqTech",
 #'                      transform = "clr")
-#'                     
+#'
 
 phy_plotTaxon_boxplot <- function(physeq,
                                   y,
                                   x,
                                   fill,
                                   transform = NULL){
-  
-  real_name <- taxon
+
+  real_name <- y
   easier_name <- make.names(real_name)
-  
+
   # transform otu counts
   if(!is.null(transform)){
     physeq_transf <- gautils2::phy_transform(physeq, transform = transform)
@@ -34,16 +34,16 @@ phy_plotTaxon_boxplot <- function(physeq,
   }else{
     physeq_transf <- physeq
   }
-  
+
   data_merged <- phy_OtuMetaTable(physeq_transf)
-  
+
   boxpl <- ggplot(data = data_merged, aes_string(x = x, y = easier_name, fill = fill))+
-    geom_boxplot()+ 
-    labs(title = real_name,
+    geom_boxplot()+
+    labs(title = sapply(strsplit(real_name, "(\\.|_|-)"), paste, collapse = " "),
          caption = paste0("transformation: ", transform),
          y = "Taxon Abundance"
     )
-  
-  
+
+
   return(boxpl)
 }

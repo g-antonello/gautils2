@@ -10,7 +10,7 @@
 #' @param col_var_names_nicer if you want nicer-looking names to the column variable items/levels,
 #' @param add_perc_column Add per-table-column's percentage column
 #' @param caption . Default is `NULL`
-#'
+#' @param cont_var_summary could be either "mean_sd" or "median_iqr"
 #' @import kableExtra
 #'
 #' @return
@@ -18,18 +18,51 @@
 #'
 #' @examples
 #' make_demogr_table(df= mtcars,
-#' row_variables_as_are = c("mpg","gear", "carb"),
-#' row_var_names_nicer = c("Miles per gallon", "NÂ° gears", "Fuel type"),
-#' col_variable = "cyl",
-#' add_perc_column = TRUE)
-#'
+#'                   row_variables_as_are = c("mpg","gear", "carb"),
+#'                   col_var_names_nicer = c("4", "6", "8"),
+#'                   row_var_names_nicer = c("Miles per gallon", "N° gears", "Fuel type"),
+#'                   col_variable = "cyl",
+#'                   add_perc_column = TRUE)
 
-make_demogr_table <- function(df, row_variables_as_are, row_var_names_nicer, col_variable, col_var_names_nicer, add_perc_column, caption=NULL){
+make_demogr_table <- function(df, row_variables_as_are, row_var_names_nicer, col_variable, col_var_names_nicer, add_perc_column, caption=NULL, cont_vars_summary = "mean_sd"){
 
   # remove NAs from the variables of the table, because NAs cannot yet be plotted in
-  df_complete <- df[complete.cases(df[, c(row_variables_as_are, col_variable)]),]
+  df_complete <- df[complete.cases(df[, c(row_variables_as_are, col_variable)]),] %>%
+    select(all_of(c(row_variables_as_are, col_variable)))
+
+
   print(paste("Incomplete rows removed:", nrow(df) - nrow(df_complete)))
 
+
+  # for CONTINUOUS VARIABLES, make a summary statistic
+
+  tmp <-   split.data.frame(x = df_complete,
+                            f = df_complete[[col_variable]]) %>%
+    lapply(function(d)
+      select_if(d, is.numeric))
+  if(cont_vars_summary == "mean_sd"){
+    means <- lapply(tmp, function(d)
+          summarise_all(d, .funs = mean)) %>%
+      bind_rows(.id = col_variable) %>%
+      column_to_rownames(col_variable) %>%
+      t()
+
+    sds <- lapply(tmp, function(d)
+      summarise_all(d, .funs = sd)) %>%
+      bind_rows(.id = col_variable) %>%
+      t()
+
+  }else{
+    medians <- lapply(tmp, function(d)
+      summarise_all(d, .funs = median)) %>%
+      bind_rows(.id = col_variable)
+
+    iqrs <- lapply(tmp, function(d)
+      summarise_all(d, .funs = IQR)) %>%
+      bind_rows(.id = col_variable)
+  }
+
+  rm(tmp)
   # make list of tables, transformed as matrices
   l <- lapply(row_variables_as_are, function(x) as.matrix(table(df_complete[[x]], df_complete[[col_variable]]))) # for each row variable, build a table, in a matrix form
 
