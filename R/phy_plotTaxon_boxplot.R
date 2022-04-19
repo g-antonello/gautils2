@@ -1,5 +1,7 @@
 #' Boxplot of a taxon
 #'
+#' Simply a wrapping function to quickly plot a taxon and fill the boxes by a variable
+#'
 #' @param physeq a phyloseq object
 #' @param y the name of the taxon you want to plot (y axis)
 #' @param x the name of the trait you want to plot (x axis)
@@ -7,6 +9,7 @@
 #' @param transform a transformation, all those in the phy_transform are allowed
 #'
 #' @return a ggplot2 object
+#' @export
 #'
 #' @examples
 #' data("enterotype")

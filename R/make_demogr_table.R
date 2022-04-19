@@ -13,7 +13,7 @@
 #' @param cont_var_summary could be either "mean_sd" or "median_iqr"
 #' @import kableExtra
 #'
-#' @return
+#' @return a KableExtra HTML table object
 #' @export
 #'
 #' @examples

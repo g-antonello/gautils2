@@ -21,7 +21,7 @@ phy_plotTaxon_boxplot(physeq, y, x, fill, transform = NULL)
 a ggplot2 object
 }
 \description{
-Boxplot of a taxon
+Simply a wrapping function to quickly plot a taxon and fill the boxes by a variable
 }
 \examples{
 data("enterotype")
@@ -31,5 +31,5 @@ phy_plotTaxon_boxplot(physeq = enterotype,
                      x = "Enterotype",
                      fill = "SeqTech",
                      transform = "clr")
-                    
+
 }
