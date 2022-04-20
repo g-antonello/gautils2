@@ -9,10 +9,10 @@
 #' @param title A character vector to entitle the plot with
 #' @param facet A character vector of a metadata variable's name
 #' @param transform A character vector of the transformation method to apply
-#'
+#' @importFrom speedyseq psmelt
 #' @return
 #' @export
-#'
+
 #' @examples
 #'
 #' data("GlobalPatterns")
