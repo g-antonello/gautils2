@@ -1,6 +1,6 @@
 #' Scatterplot of a taxon
 #'
-#' Make sure the "trait" parameter calls a continuous variable
+#' Make sure the "x" parameter calls a continuous variable
 #'
 #' @param physeq a phyloseq object
 #' @param y the name of the taxon you want to plot (y axis)
@@ -30,12 +30,12 @@ phy_plotTaxon_scatter <- function(physeq,
                               transform= NULL
                           ){
 
-  if(!(class(physeq@sam_data[[trait]]) %in%
+  if(!(class(physeq@sam_data[[x]]) %in%
        c("integer", "double", "numeric", "Date", "character", "factor"))){
-    stop("trait select is of a non-compatible format")
+    stop("x select is of a non-compatible format")
   }
 
-  real_name <- x
+  real_name <- y
   easier_name <- make.names(real_name)
 
   # transform otu counts

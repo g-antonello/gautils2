@@ -28,7 +28,8 @@
 metaphlan_to_phyloseq <- function(mpa,
                                   metadata = NULL,
                                   phyloTree = NULL,
-                                  version = 4){
+                                  version = 4,
+                                  verbose = TRUE){
 
 
   if(version == 4){
@@ -51,6 +52,29 @@ metaphlan_to_phyloseq <- function(mpa,
   # subset taxonomic names, and keep the counts per samples only
   otu_ready <- mpa[,3:ncol(mpa)] %>%
     as.matrix()
+
+  if(!is.null(metadata)){
+    inters_names <- intersect(colnames(otu_ready), rownames(metadata))
+    if(verbose){
+      if(length(colnames(otu_ready)[!(colnames(otu_ready) %in% inters_names)])!= 0){
+    cat("Metaphlan table samples lost: ")
+    cat(colnames(otu_ready)[!(colnames(otu_ready) %in% inters_names)], sep = " ")
+    cat("\n")
+    cat("\n")
+      }
+
+      if(length(rownames(metadata)[!(rownames(metadata) %in% inters_names)]) != 0){
+    cat("Metadata table samples lost: ")
+    cat(rownames(metadata)[!(rownames(metadata) %in% inters_names)], sep = " ")
+    cat("\n")
+    cat("\n")
+      }
+    }
+
+    otu_ready <- otu_ready[, inters_names]
+    metadata <- metadata[match(inters_names, rownames(metadata)),]
+
+  }
 
   # create taxonomy table
   taxonomy_tab <- select(mpa, clade_name) %>%

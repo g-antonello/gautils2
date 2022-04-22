@@ -16,11 +16,11 @@
 #' GlobalPatterns <- phy_substitute_metadata(physeq = GlobalPatterns, new_metadata = newMeta)
 #'
 phy_substitute_metadata <- function(physeq, new_metadata){
-  if(any(!rownames(new_metadata)%in%sample_names(physeq))){ # this is like asking: is any item of the vector NOT true? if responds true, it means rownames are not all there.
-    stop ("not all row names of the metadata are in the sample names of the phyloseq object")
+  if(any(!rownames(new_metadata)%in%sample_names(physeq))){
+    stop ("not all row names of the new metadata are in the sample names of the phyloseq object")
   }
   # reorganize metadata
-  new_metadata <- new_metadata[match(sample_names(physeq), rownames(new_metadata)),]
+  new_metadata <- new_metadata[sample_names(physeq),]
   # remove old metadata
   physeq@sam_data <- NULL
   sample_data(physeq) <- sample_data(new_metadata)
