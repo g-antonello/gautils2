@@ -14,7 +14,6 @@
 #' @import kableExtra
 #'
 #' @return a KableExtra HTML table object
-#' @export
 #'
 #' @examples
 #' make_demogr_table(df= mtcars,

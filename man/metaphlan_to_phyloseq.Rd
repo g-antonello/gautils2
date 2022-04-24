@@ -4,16 +4,24 @@
 \alias{metaphlan_to_phyloseq}
 \title{Create a phyloseq object from Metaphlan profiles}
 \usage{
-metaphlan_to_phyloseq(mpa, metadata = NULL, phyloTree = NULL, version = 4)
+metaphlan_to_phyloseq(
+  mpa,
+  metadata = NULL,
+  version = 4,
+  verbose = TRUE,
+  tax_lvl = "Species"
+)
 }
 \arguments{
 \item{mpa}{Either a \code{character} vector containing the path to the text table to read, or the already-read object}
 
 \item{metadata}{If in possession, add metadata to the phyloseq object. make sure the name and order of samples is correct for the mpa columns and metadata rows}
 
-\item{phyloTree}{If in possession, ad phylogenetic tree of these taxa. make sure the tree is read with \code{ape::read.tree}}
-
 \item{version}{the metaphlan version, by default, version 4 is taken (to date it is the latest - Apr 2022). Versions below 3 are not supported}
+
+\item{verbose}{\code{logical}, whether you want to see which samples did not match between the otu and metadata tables}
+
+\item{tax_lvl}{\code{character}, with the taxonomic level (eg. Phylum, Class, ..., Genus, Species) that you want to have in the phyloseq}
 }
 \value{
 

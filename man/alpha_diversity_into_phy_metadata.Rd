@@ -6,7 +6,7 @@
 \usage{
 alpha_diversity_into_phy_metadata(
   physeq,
-  raref_depth,
+  raref_depth = NULL,
   measures,
   verbose = FALSE
 )

@@ -25,10 +25,16 @@
 #'
 
 alpha_diversity_into_phy_metadata <- function(physeq,
-                                              raref_depth,
+                                              raref_depth = NULL,
                                               measures,
                                               verbose = FALSE
                                               ){
+
+  if(is.null(raref_depth)){
+    raref_depth = min(colSums(abundances(physeq)))
+    cat(paste("Rarefying all samples to", raref_depth, "counts each"))
+  }
+
   library(magrittr)
   # get the estimates
   tmp <- rarefy_even_depth(physeq, raref_depth, verbose = FALSE) %>%

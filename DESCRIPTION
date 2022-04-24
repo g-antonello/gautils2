@@ -1,14 +1,14 @@
 Package: gautils2
 Type: Package
-Title: Wrapper of my functions to wrangle microbiome and non-microbiome data  
-Version: 0.1.0
+Title: Wrapper of my functions to wrangle mostly microbiome data
+Version: 0.2.0
 Author: Giacomo Antonello
 Maintainer: Giacomo Antonello <giacomoantonello1@gmail.com>
-Description: The package contains several functions for data manipulation, visualization and so on. Functions about phyloseq objects start with "phy_".
-    Use four spaces when indenting paragraphs within the Description.
+Description: The package contains several functions for microbiome data generation, manipulation, visualization and so on. Functions about phyloseq objects start with "phy_".
+    Use four spaces when indenting paragraphs within the DESCRIPTION.
 License: GNU 3.0
 Encoding: UTF-8
 LazyData: true
-Depends: phyloseq, microbiome, tidyverse,  kableExtra, purrr, reshape2, stringr, magrittr, tidyr
+Depends: phyloseq, microbiome, tidyverse,  kableExtra, purrr, reshape2, stringr, magrittr, tidyr, speedyseq
 RoxygenNote: 7.1.2
 

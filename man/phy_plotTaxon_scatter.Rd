@@ -21,7 +21,7 @@ phy_plotTaxon_scatter(physeq, y, x, colour = NULL, transform = NULL)
 a ggplot2 object
 }
 \description{
-Make sure the "trait" parameter calls a continuous variable
+Make sure the "x" parameter calls a continuous variable
 }
 \examples{
 data("enterotype")
