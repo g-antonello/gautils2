@@ -113,6 +113,17 @@ if(visual_grouping  == "ellipses"){
 if(is.null(visual_grouping)){
   return(basic_plot)
 } else{
+
+  x_pcnt <- final_plot$labels$x %>% strsplit(split = "? ") %>% sapply(function(l) l[[length(l)]])
+
+  y_pcnt <- final_plot$labels$y %>% strsplit(split = "? ") %>% sapply(function(l) l[[length(l)]])
+
+  x_final <- paste(method, axes[1], " ", x_pcnt)
+  y_final <- paste(method, axes[2], " ", y_pcnt)
+
+  final_plot$labels$x <- x_final
+  final_plot$labels$y <- y_final
+
   return(final_plot)
 }
 }
