@@ -4,12 +4,12 @@
 \alias{phy_drop_NA_vars}
 \title{Drop NAs from selected variables}
 \usage{
-phy_drop_NA_vars(physeq, vars)
+phy_drop_NA_vars(physeq, variables, verbose = TRUE)
 }
 \arguments{
 \item{physeq}{a phyloseq object}
 
-\item{vars}{a character vector with variable names to remove NAs from}
+\item{variables}{a character vector with variable names to remove NAs from}
 }
 \value{
 a clean phyloseq object

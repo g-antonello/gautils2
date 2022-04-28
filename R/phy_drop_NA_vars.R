@@ -3,7 +3,7 @@
 #'
 #' Given a phyloseq object and a character vector, the function removes all NAs that are in at least one variable
 #' @param physeq a phyloseq object
-#' @param vars a character vector with variable names to remove NAs from
+#' @param variables a character vector with variable names to remove NAs from
 #'
 #' @return a clean phyloseq object
 #' @export
@@ -18,13 +18,22 @@
 #' drop_NA_from_phyloseq_vars(physeq = GlobalPatternsNA, vars = c("newVar1", "newVar2"))
 #' GlobalPatterns
 
-phy_drop_NA_vars <- function(physeq, vars){
-  # get a logical vector to subset variables in those
-  subset_logical <- microbiome::meta(physeq) %>%
-    select(vars) %>%
-    complete.cases()
+phy_drop_NA_vars <- function(physeq, variables, verbose = TRUE){
 
-  physeq_cleaned <- prune_samples(subset_logical, physeq)
+  metadata_reduced <- microbiome::meta(physeq) %>%
+    select(all_of(variables))
+
+  if(verbose){
+  nas <-  sapply(metadata_reduced, function(x) sum(is.na(x))) %>%
+    as.data.frame() %>%
+    set_names("N? NA")
+
+  print(nas)
+  }
+  # get a logical vector to subset variables in those
+  subset_logical <- complete.cases(metadata_reduced)
+
+  physeq_cleaned <- speedyseq::filter_sample_data(physeq,subset_logical)
   physeq_cleaned <- prune_taxa(taxa_sums(physeq_cleaned) > 0,physeq_cleaned)
 
   return(physeq_cleaned)

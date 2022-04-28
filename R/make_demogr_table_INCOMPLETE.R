@@ -1,5 +1,7 @@
 #' Make a complex demographic table
 #'
+#' An attempt to make a nice and flexible demographic table, possibly also adding significance when applicable... too ambitious though, probably I will never make it work. so far it doesn't, indeed.
+#'
 #' Summarize multiple **categorical** variable columns in one handy function
 #' NB: Doesn't yet work perfectly, also, it doesn't make summary statistics of continuous variables
 #'
@@ -19,7 +21,7 @@
 #' make_demogr_table(df= mtcars,
 #'                   row_variables_as_are = c("mpg","gear", "carb"),
 #'                   col_var_names_nicer = c("4", "6", "8"),
-#'                   row_var_names_nicer = c("Miles per gallon", "N° gears", "Fuel type"),
+#'                   row_var_names_nicer = c("Miles per gallon", "N? gears", "Fuel type"),
 #'                   col_variable = "cyl",
 #'                   add_perc_column = TRUE)
 
