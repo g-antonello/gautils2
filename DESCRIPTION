@@ -9,6 +9,6 @@ Description: The package contains several functions for microbiome data generati
 License: GNU 3.0
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.6.3), phyloseq, microbiome, tidyverse, kableExtra, purrr, reshape2, stringr, magrittr, tidyr, speedyseq
+Depends: phyloseq, microbiome, tidyverse, kableExtra, purrr, reshape2, stringr, magrittr, tidyr, speedyseq
 RoxygenNote: 7.1.2
 
