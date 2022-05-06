@@ -1,7 +1,7 @@
 Package: gautils2
 Type: Package
 Title: Wrapper of my functions to wrangle mostly microbiome data
-Version: 0.2.0
+Version: 0.3.0
 Author: Giacomo Antonello
 Maintainer: Giacomo Antonello <giacomoantonello1@gmail.com>
 Description: The package contains several functions for microbiome data generation, manipulation, visualization and so on. Functions about phyloseq objects start with "phy_".
@@ -9,6 +9,6 @@ Description: The package contains several functions for microbiome data generati
 License: GNU 3.0
 Encoding: UTF-8
 LazyData: true
-Depends: phyloseq, microbiome, tidyverse,  kableExtra, purrr, reshape2, stringr, magrittr, tidyr, speedyseq
+Depends: R (>= 3.6.3), phyloseq, microbiome, tidyverse, kableExtra, purrr, reshape2, stringr, magrittr, tidyr, speedyseq
 RoxygenNote: 7.1.2
 

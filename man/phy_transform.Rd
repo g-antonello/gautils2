@@ -9,7 +9,7 @@ phy_transform(physeq, transform)
 \arguments{
 \item{physeq}{a phyloseq object}
 
-\item{transform}{all options available in "microbiome::transform()", extending it with the "asinh" option}
+\item{transform}{all options available in "microbiome::transform()", extending it with the \code{arcsinh} ("asinh"), \code{geometric mean}("gm_mean") and \code{Rank Inverse Normal transf.}("irn")}
 }
 \value{
 
