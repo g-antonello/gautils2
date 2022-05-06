@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' dat <- c("2022-09-28", "2021-07-15", "2020-02-10", "2019-04-19")
-#' season <- date_to_Season(dat)
+#' season <- date_to_Season(date)
 #'
 #' levels(season)
 #'
@@ -19,10 +19,10 @@
 #' # season %<>% factor(ordered = FALSE)
 #'
 date_to_Season <- function(date) {
-  stopifnot(class(dat) == "Date")
-  scalarCheck <- function(dat) {
-    m <- as.POSIXlt(dat)$mon + 1        # correct for 0:11 range
-    d <- as.POSIXlt(dat)$mday           # correct for 0:11 range
+  stopifnot(class(date) == "Date")
+  scalarCheck <- function(date) {
+    m <- as.POSIXlt(date)$mon + 1        # correct for 0:11 range
+    d <- as.POSIXlt(date)$mday           # correct for 0:11 range
     if ((m == 3 &
          d >= 21) | (m == 4) | (m == 5) | (m == 6 & d < 21)) {
       r <- 1
@@ -38,7 +38,7 @@ date_to_Season <- function(date) {
     r
   }
 
-  res <- sapply(dat, scalarCheck)
+  res <- sapply(date, scalarCheck)
   res <-
     ordered(res, labels = c("Spring", "Summer", "Autumn", "Winter"))
   return(res)
