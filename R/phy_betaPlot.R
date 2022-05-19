@@ -93,13 +93,8 @@ if(visual_grouping == "spiders"){
 }
 
 if(visual_grouping == "hulls"){
-  hulls <- basic_plot_data %>%
-    group_by(eval(parse(text = color))) %>%
-    slice(chull(eval(parse(text = ax1)),eval(parse(text = ax2))))
-
-  final_plot <- basic_plot +
-    geom_polygon(data = hulls, aes_string(fill = color),color= "transparent", alpha = 0.3, show.legend = FALSE)+
-    scale_fill_manual(values = palette_for_all)
+  final_plot <- basic_plot %>%
+    ggforce::geom_mark_hull(aes(fill = eval(parse(text = color)), alpha = 0.3))
 
 }
 
