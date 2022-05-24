@@ -94,7 +94,7 @@ if(visual_grouping == "spiders"){
 
 if(visual_grouping == "hulls"){
   final_plot <- basic_plot +
-    ggforce::geom_mark_hull(aes(fill = eval(parse(text = color)), alpha = 0.3))
+    ggforce::geom_mark_hull(aes(fill = eval(parse(text = color)), alpha = 0.3, show.legend = FALSE))
 
 }
 
