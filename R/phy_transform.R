@@ -2,7 +2,7 @@
 #'
 #' Same as microbiome::transform(), but also adding the hyperbolic arcsine
 #' @param physeq a phyloseq object
-#' @param transform all options available in "microbiome::transform()", extending it with the \code{arcsinh} ("asinh"), \code{geometric mean}("gm_mean") and \code{Rank Inverse Normal transf.}("irn")
+#' @param transform all options available in "microbiome::transform()", extending it with the \code{arcsinh} ("asinh"), \code{geometric mean}("gm_mean"), \code{Hellinger} ("hellinger"), and \code{Rank Inverse Normal transf.}("irn")
 #' @importFrom RNOmni RankNorm
 #' @return
 #' @export
@@ -35,6 +35,12 @@ phy_transform <- function(physeq, transform){
 
     if(transform %in% c("asinh", "gm_mean")){
       transformed_otu <- apply(microbiome::abundances(physeq), 1, transform)
+    }
+
+    if(transform == "hellinger"){
+      transformed_otu <- microbiome::transform(physeq, "compositional") %>%
+        microbiome::abundances() %>%
+        apply(1, sqrt)
     }
 
     physeq_transf <- physeq
