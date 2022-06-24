@@ -26,9 +26,6 @@ phy_barplotTaxa(
 
 \item{transform}{A character vector of the transformation method to apply}
 }
-\value{
-
-}
 \description{
 A not-fully-finished but "MVP" (minimum viable product) function that plots phyloseq data preferrably in relative abundance.
 }

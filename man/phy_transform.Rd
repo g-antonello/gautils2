@@ -9,10 +9,7 @@ phy_transform(physeq, transform)
 \arguments{
 \item{physeq}{a phyloseq object}
 
-\item{transform}{all options available in "microbiome::transform()", extending it with the \code{arcsinh} ("asinh"), \code{geometric mean}("gm_mean") and \code{Rank Inverse Normal transf.}("irn")}
-}
-\value{
-
+\item{transform}{all options available in "microbiome::transform()", extending it with the \code{arcsinh} ("asinh"), \code{geometric mean}("gm_mean"), \code{Hellinger} ("hellinger"), and \code{Rank Inverse Normal transf.}("irn")}
 }
 \description{
 Same as microbiome::transform(), but also adding the hyperbolic arcsine

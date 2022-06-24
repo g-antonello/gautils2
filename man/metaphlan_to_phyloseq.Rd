@@ -23,9 +23,6 @@ metaphlan_to_phyloseq(
 
 \item{tax_lvl}{\code{character}, with the taxonomic level (eg. Phylum, Class, ..., Genus, Species) that you want to have in the phyloseq}
 }
-\value{
-
-}
 \description{
 Given the profiles' location, or a pre-loaded table, the function creates a taxonomic table and creates a phyloseq object. if metadata and phylogenetic tree are available, it will try to include those
 }

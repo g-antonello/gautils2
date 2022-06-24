@@ -44,9 +44,6 @@ phy_heatmap(
 
 \item{treeheight_col}{A \code{numeric} value for drawing the height of the column-wise tree clustering}
 }
-\value{
-
-}
 \description{
 Make a quick heatmap of selected features, also transforming internally
 }

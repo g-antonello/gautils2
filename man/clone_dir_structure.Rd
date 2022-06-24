@@ -11,9 +11,6 @@ clone_dir_structure(start_dir, end_dir)
 
 \item{end_dir}{a character vector with a path to an existing directory}
 }
-\value{
-
-}
 \description{
 Takes a directory and clones its structure elsewhere, but without copying files
 }

@@ -17,6 +17,3 @@ either a list of sequences or it writes them into the specified file
 \description{
 Title
 }
-\examples{
-
-}

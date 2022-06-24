@@ -13,9 +13,6 @@ bin_integer_into_integer(x, multiples, include.lowest = FALSE)
 
 \item{include_highest}{Do you want to include upper or lower values in the bin? eg: if `multiples = 5` include_highest --> 'value <= 5', otherwise 'value < 5'}
 }
-\value{
-
-}
 \description{
 Numeric binning means that any value even closer to its next multiple, is still binned to its lowest. Example: with "multiple = 5", 4.9 is still inside the 5 bin, but 5.1 is in the 10 bin. this is not a good approximation, but sometimes you need such an approximation
 }

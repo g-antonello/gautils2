@@ -17,7 +17,7 @@ Convert an object of Date class and turn into an ordered season factor, with Spr
 }
 \examples{
 dat <- c("2022-09-28", "2021-07-15", "2020-02-10", "2019-04-19")
-season <- date_to_Season(dat)
+season <- date_to_Season(date)
 
 levels(season)
 
