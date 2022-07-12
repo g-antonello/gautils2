@@ -6,7 +6,7 @@
 #'
 #' @return a printed subset of the data
 
-#' @export 
+#' @export
 #'
 #' @examples
 #' data(iris)
@@ -14,5 +14,5 @@
 #' qklook(iris, 5,5)
 
 qklook <- function(x, nrows=8, ncols=8){
-  return(x[nrows, ncols])
+  return(x[1:nrows, 1:ncols])
 }
